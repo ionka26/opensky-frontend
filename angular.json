@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -73,6 +74,10 @@
             "development": {
               "browserTarget": "openskyfront:build:development"
             }
+          },
+          "options": {
+            "browserTarget": "openskyfront:build", 
+            "proxyConfig": "proxy.conf.json" 
           },
           "defaultConfiguration": "development"
         },

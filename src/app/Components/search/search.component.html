@@ -1,0 +1,45 @@
+<!-- FORMULARIO DE BÚSQUEDA -->
+<div class="container-form"> 
+
+    <form #searchForm="ngForm" class="row g-3 needs-validation" (ngSubmit)="onSubmit(searchForm.value)">  
+    
+      <!-- SELECTOR DE AEROPUERTOS -->
+      <div class="col-12">
+        <label for="airport" class="form-label">Airport</label>
+        
+        <div *ngIf="!airports[1]">
+          <select class="form-select" aria-label="e" > 
+            <option>Loading airports...</option>                  
+          </select>
+        </div>
+        <div *ngIf="airports[1]">
+          <select name="airport" class="form-select" aria-label="e" ngModel> 
+            <option value="" disabled>Choose an airport</option>
+            <option *ngFor="let airport of airports" >{{ airport.name }}</option>               
+          </select>
+        </div>
+      </div>
+      <!-- SELECTOR DE FECHA INICIO -->
+      <div class="col-sm-6">
+        <label for="startDate" class="form-label">Start date</label>
+        <ngb-datepicker name="begin" #d [startDate]="{year: current_year, month: current_month}" ngModel> </ngb-datepicker>      
+      </div>
+  <!-- SELECTOR DE FECHA INICIO -->
+      <div class="col-sm-6">
+        <label for="endDate" class="form-label">End date</label>
+         <ngb-datepicker name="finish" #d [startDate]="{year: current_year, month: current_month}" ngModel> </ngb-datepicker>   
+      </div>
+      
+  <!-- MENSAJE DE ERROR -->
+      <div class="alert alert-danger d-flex align-items-center" role="alert" *ngIf="error">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        <div>
+         {{ error }}
+        </div>
+      </div>
+    <!-- BOTON DE BÚSQUEDA -->
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Find flights</button>
+      </div>
+  </form>
+  </div>

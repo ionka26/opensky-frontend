@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "http://www.miopensky.com",
+      "secure": true,
+      "changeOrigin": true      
+    }
+  }

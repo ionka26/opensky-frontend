@@ -1,0 +1,55 @@
+<div class="container"> 
+<p> Click over the blue button to sort the column</p>
+<div *ngIf="!flights[1]">
+    <div class="spinner-border" role="status">
+        
+      </div>
+      <span class="sr-only">Loading...</span>
+</div>
+<div *ngIf="flights[1]">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col" (click)="sortFlights('icao24')"><a class="btn btn-sm btn-primary"  role="button">ICAO24</a></th>
+        <th scope="col" (click)="sortFlights('firstSeen')"><a class="btn btn-sm btn-primary"  role="button">First Seen</a></th>
+        <th scope="col" (click)="sortFlights('estDepartureAirport')"><a class="btn btn-sm btn-primary"  role="button">Departure</a></th>
+        <th scope="col" (click)="sortFlights('lastSeen')"><a class="btn btn-sm btn-primary"  role="button">Last Seen</a></th>
+        <th scope="col" (click)="sortFlights('estArrivalAirport')"><a class="btn btn-sm btn-primary"  role="button">Arrival</a></th>
+        <th scope="col" (click)="sortFlights('callsign')"><a class="btn btn-sm btn-primary"  role="button">Call sign</a></th>
+        <th scope="col" (click)="sortFlights('estDepartureAirportHorizDistance')"><a class="btn btn-sm btn-primary"  role="button">DAHD</a></th>
+        <th scope="col" (click)="sortFlights('estDepartureAirportVertDistance')"><a class="btn btn-sm btn-primary"  role="button">DAVD</a></th>
+        <th scope="col" (click)="sortFlights('estArrivalAirportHorizDistance')"><a class="btn btn-sm btn-primary"  role="button">AAHD</a></th>
+        <th scope="col" (click)="sortFlights('estArrivalAirportVertDistance')"><a class="btn btn-sm btn-primary"  role="button">AAVD</a></th>
+        <th scope="col" (click)="sortFlights('departureAirportCandidatesCount')"><a class="btn btn-sm btn-primary"  role="button">D Candidates</a></th>
+        <th scope="col" (click)="sortFlights('naarrivalAirportCandidatesCountme')"><a class="btn btn-sm btn-primary"  role="button">A Candidates</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let flight of currentFlights; index as i">
+        <th scope="row">{{ i + 1 }}</th>    
+        <td>{{ flight.icao24 }}</td>
+        <td>{{ flight.firstSeen }}</td>
+        <td>{{ flight.estDepartureAirport }}</td>
+        <td>{{ flight.lastSeen }}</td>
+        <td>{{ flight.estArrivalAirport }}</td>
+        <td>{{ flight.callsign }}</td>
+        <td>{{ flight.estDepartureAirportHorizDistance }}</td>
+        <td>{{ flight.estDepartureAirportVertDistance }}</td>
+        <td>{{ flight.estArrivalAirportHorizDistance }}</td>
+        <td>{{ flight.estArrivalAirportVertDistance }}</td>
+        <td>{{ flight.departureAirportCandidatesCount }}</td>
+        <td>{{ flight.arrivalAirportCandidatesCount }}</td>
+    </tr>
+    </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+        <span  *ngFor="let pag of pagesArray; index as i">
+          <li *ngIf="currentPage==pag" class="page-item disabled" ><a  class="page-link" (click)="actualRows(pag)">{{ pag }}</a></li>  
+          <li *ngIf="currentPage!=pag" class="page-item " ><a  class="page-link" (click)="actualRows(pag)">{{ pag }}</a></li>         
+        </span>
+        </ul>
+      </nav>
+    </div>
+</div>
