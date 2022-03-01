@@ -10,7 +10,7 @@ import { ResultsComponent } from './Components/results/results.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SearchComponent } from './Components/search/search.component';
 import { ErrorComponent } from './Components/error/error.component';
-import { StateComponentComponent } from './state-component/state-component.component';
+
 import { StateComponent } from './state/state.component';
 
 @NgModule({
@@ -20,8 +20,7 @@ import { StateComponent } from './state/state.component';
     ResultsComponent,
     FooterComponent,
     SearchComponent,
-    ErrorComponent,
-    StateComponentComponent,
+    ErrorComponent,  
     StateComponent
   ],
   imports: [
